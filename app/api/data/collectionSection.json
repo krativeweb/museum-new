@@ -1,0 +1,24 @@
+{
+  "eyebrow": "PREVIEW THE COLLECTION OF",
+  "titleLines": [
+    "DISCOVER THE",
+    "CONSTITUTION",
+    "IN ITS MOST",
+    "ARTISTIC FORM"
+  ],
+  "description": "The museum is carefully curated to offer a multi-layered experience, combining art, history, and technology. Divided into distinct galleries and zones, it allows visitors to explore various aspects of the Constitution in an engaging and interactive manner.",
+  "button": {
+    "label": "BOOK A VISIT",
+    "link": "#"
+  },
+"items": [
+  { "sub": "GROUND FLOOR", "title": "FOUNDATION" },
+  { "sub": "MEZZANINE", "title": "MAKERS" },
+  { "sub": "FIRST FLOOR", "title": "EXPERIENCE" },
+  { "sub": "", "title": "ARTISTS" }
+]
+
+
+
+
+}

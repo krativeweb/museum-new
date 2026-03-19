@@ -1,0 +1,33 @@
+{
+  "topMural": {
+    "image": "./images/g1.png",
+    "alt": "Mural celebrating women of Constituent Assembly"
+  },
+
+  "visionBlock": {
+    "title": "VOICES OF VISION",
+    "description": "This mural celebrates the 15 women members of the Constituent Assembly, who played a pivotal role in shaping the nation’s Constitution."
+  },
+
+  "indiaMap": {
+    "image": "./images/g3.png",
+    "title": "BHARAT",
+    "description": "This sculpture is a distinctive portrayal of India, crafted from repurposed materials such as discarded bearings, gears, and industrial scrap."
+  },
+
+  "framedArt": {
+    "image": "./images/g2.png",
+    "alt": "Framed artwork"
+  },
+
+  "centerHero": {
+    "image": "./images/g4.png",
+    "titleLines": ["MUSEUM GARDEN"],
+    "description": "Through the active participation in constitution-making, these women articulated visions of freedom, equality, and citizenship, ensuring that diverse voices were reflected in the nation’s governing framework. The mural invites visitors to reflect on their enduring influence and the continuing relevance of constitutional values in public life."
+  },
+
+  "statue": {
+    "image": "./images/g5.png",
+    "alt": "Statue artwork"
+  }
+}

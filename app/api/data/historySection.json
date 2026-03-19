@@ -1,0 +1,17 @@
+{
+  "eyebrow": "HISTORY",
+  "title": {
+    "number": "75 Years",
+    "emphasis": "of",
+    "main": "the Constitutional Legacy"
+  },
+  "description": "India's Constitution emerged from a remarkable convergence of indigenous wisdom and universal ideals, forged through centuries of social transformation and the crucible of colonial oppression. Crafted in the aftermath of colonial rule, it affirms every citizen’s right to liberty and dignity. Decades later, right found new resonance when the question of liberty arose in an unexpected form: could an ordinary citizen hoist the national flag?",
+  "button": {
+    "label": "OUR HISTORY",
+    "link": "#"
+  },
+  "image": {
+    "src": "./images/two.png",
+    "alt": "Historic Museum"
+  }
+}

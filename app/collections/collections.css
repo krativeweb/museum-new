@@ -1,0 +1,365 @@
+.top-bar {
+    justify-content: space-between;
+    padding: 56px;
+    margin-top: 100px;
+    display: flex;
+}
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px 40px;
+  border-bottom: 1px solid #e6e2da;
+  background: #f5f2ec;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 75%;
+}
+
+/* Tab buttons */
+.categories button {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid #dcd7cf;
+  color: #1f1f1f;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+/* Hover */
+.categories button:hover {
+  background: #efece6;
+}
+
+/* Active tab */
+.categories button.active {
+  background: #d9f15a;
+  border-color: #d9f15a;
+  color: #000;
+  font-weight: 600;
+}
+
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 50px;
+  padding: 80px;
+}
+
+.grid-item img {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.grid-item:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.list-view {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 80px;
+}
+
+.list-row {
+  display: flex;
+  gap: 24px;
+  cursor: pointer;
+  border-bottom: 2px solid #d7d7d7;
+  padding: 20px;
+}
+.list-row:hover {
+  background-color: #f1efe9;
+  border-bottom-color: #1c1c1c;
+}
+
+
+.hover-image img {
+  width: 100%;
+  position: sticky;
+  top: 120px;
+  height: 60vh;
+  object-fit: scale-down;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: #f5f2ec;
+  z-index: 999;
+}
+
+.modal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px;
+}
+
+.close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+/* FULLSCREEN OVERLAY */
+.collection-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(245, 242, 236, 0.96);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MODAL */
+.collection-modal {
+  width: 90vw;
+  height: 90vh;
+  background: #f5f2ec;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CONTENT */
+.modal-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 80px;
+}
+
+/* IMAGE */
+.modal-inner img {
+  width: 100%;
+  height: 80vh;
+  object-fit: scale-down;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.view-toggle {
+  display: flex;
+  gap: 6px;
+  border: 1px solid #dcd7cf;
+  border-radius: 999px;
+  padding: 4px;
+  background: #fff;
+}
+
+/* Toggle buttons */
+.view-toggle button {
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+/* Hover */
+.view-toggle button:hover {
+  background: #efece6;
+}
+
+/* Optional active state (recommended) */
+.view-toggle button.active {
+  background: #1c1c1c;
+  color: #fff;
+}
+/* ───────── MOBILE: ONLY GRID / LIST VIEW ───────── */
+
+@media (max-width: 768px) {
+  /* Hide filters */
+  .categories {
+    display: none;
+  }
+
+  /* Adjust top bar */
+  .top-bar {
+    justify-content: center;
+    padding: 16px;
+  }
+
+  /* Center toggle */
+  .view-toggle {
+    margin: 0 auto;
+  }
+      .list-view {
+        /* grid-template-columns: 2fr 1fr; */
+        padding: 20px;
+        /* display: grid; */
+        line-height: 60px;
+        justify-content: center;
+        text-align: center;
+        justify-items: center;
+        display:inline-flex;
+    }
+    .list-row h2 {
+  margin-top: 15px;
+}
+
+
+.grid-view {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 80px;
+    padding: 20px;
+    display: grid;
+}
+}
+.modal-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* TITLE */
+.detail-title {
+  font-family: "Playfair Display", serif;
+  font-size: 52px;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+
+/* ACCESSION TAG */
+.detail-accession {
+  display: inline-block;
+  width: fit-content;
+  border: 1px solid #bdb8af;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 999px;
+  margin-bottom: 28px;
+}
+
+/* META GRID */
+.detail-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 48px;
+}
+
+.detail-meta label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #777;
+}
+
+.detail-meta p {
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+/* DIVIDER */
+.detail-divider {
+  height: 1px;
+  background: #d4d0c8;
+  margin: 28px 0;
+}
+
+/* DESCRIPTION */
+.detail-description {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 560px;
+  color: #333;
+}
+/* ───────── COLLECTION MODAL – MOBILE ───────── */
+@media (max-width: 768px) {
+
+  /* Overlay stays full */
+  .collection-overlay {
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  /* Modal container */
+  .collection-modal {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  /* Stack image + content */
+  .modal-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px;
+  }
+
+  /* Image */
+  .modal-inner img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Title */
+  .detail-title {
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  /* Meta grid becomes single column */
+  .detail-meta {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Divider spacing */
+  .detail-divider {
+    margin: 20px 0;
+  }
+
+  /* Description */
+  .detail-description {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  /* Close button */
+  .close-btn {
+    top: 16px;
+    right: 16px;
+    font-size: 22px;
+  }
+}
+/* GRID VIEW /images */
+.grid-item img {
+ object-fit: scale-down;
+    width: 100%;
+    height: 45vh;
+    display: block;
+}
+
+/* LIST VIEW /images */
+.list-item img {
+  width: 180px;          /* optional */
+  height: 180px;         /* 👈 same height */
+  object-fit: cover;
+  flex-shrink: 0;
+}

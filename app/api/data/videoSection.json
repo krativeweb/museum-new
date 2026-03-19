@@ -1,0 +1,16 @@
+{
+  "video": {
+    "src": "video/museum.mp4",
+    "autoPlay": true,
+    "muted": false,
+    "loop": true,
+    "playsInline": true
+  },
+  "thumbnail": {
+    "src": "./images/two.jpg",
+    "alt": "Interior preview"
+  }
+}
+
+
+

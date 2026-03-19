@@ -1,0 +1,23 @@
+{
+  "leftImage": {
+    "src": "./images/seven.png",
+    "alt": "Garden view from Museum"
+  },
+  "floatingImage": {
+    "src": "./images/three.jpg",
+    "alt": "Historic fabric"
+  },
+  "eyebrow": "VIRTUAL TOUR",
+  "title": {
+    "main": "Inside",
+    "emphasis": "the",
+    "sub": "Living Document"
+  },
+  "paragraphs": [
+    "Explore India's Constitution Museum through our guided virtual tour, where constitutional history transforms from archives into action. Beginning with Naveen Jindal's landmark case, journey backwards to discover the democratic foundations that made such victories inevitable. Each segment encourages visitors to engage with concepts that define Indian democracy, illustrating how these principles serve as a blueprint for the governance of a complex and pluralistic nation."
+  ],
+  "button": {
+    "label": "Schedule a visit to India's First Constitution Museum",
+    "link": "#"
+  }
+}

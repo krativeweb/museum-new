@@ -1,0 +1,18 @@
+{
+  "leftImage": {
+    "src": "./images/five.png",
+    "alt": "Garden view from Museum"
+  },
+  "floatingImage": {
+    "src": "./images/naveen-jindal.jpg",
+    "alt": "Historic fabric"
+  },
+  "title": {
+    "main": "The lore of",
+    "emphasis": "India’s Flag Satyagrahi:",
+    "sub": "Naveen Jindal"
+  },
+  "paragraphs": [
+    "Naveen Jindal waged a decade-long legal battle challenging restrictions on citizens flying the national flag. His persistence led to a landmark 2002 Supreme Court ruling that recognised every Indian's fundamental right to hoist the tricolour. Following this victory, Jindal established the Flag Foundation of India the same year to promote flag etiquette and national awareness."
+  ]
+}

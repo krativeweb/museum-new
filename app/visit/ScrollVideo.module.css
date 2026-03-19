@@ -1,0 +1,30 @@
+.section {
+  min-height: auto;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Initial hidden state */
+.video {
+  width: 100%;
+  
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* When visible */
+.show .video {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .video {
+    max-width: 100%;
+  }
+}
