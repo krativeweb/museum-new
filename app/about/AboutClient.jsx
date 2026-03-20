@@ -100,112 +100,83 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
- <section className="editorial-nav">
-        {/* ROW 1 */}
-        <div className="editorial-row row-1">
-          <span className="editorial-kicker">
-            {data.editorial_tabs[0]?.small_title}
-          </span>
+<section className="editorial-nav">
+  {/* ROW 1 */}
+  <div className="editorial-row row-1">
+    <span className="editorial-kicker">NARRATED VIDEO TOURS</span>
+    <h2 className="editorial-heading">VIRTUAL TOUR</h2>
 
-          <h2 className="editorial-heading">
-            {data.editorial_tabs[0]?.main_title}
-          </h2>
+    <div className="editorial-image img-right">
+      <img src="../images/one.jpg" alt="Virtual tour" />
+    </div>
+    <div className="editorial-arrow">
+    <span>→</span>
+  </div>
+  </div>
 
-          <div className="editorial-image img-right">
-            <img
-              src={data.editorial_tabs[0]?.image}
-              alt={data.editorial_tabs[0]?.main_title}
-            />
-          </div>
+  <div className="editorial-line" />
 
-          <div className="editorial-arrow">
-            <span>→</span>
-          </div>
-        </div>
+  {/* ROW 2 */}
+  <div className="editorial-row row-2">
+    <span className="editorial-kicker center">DIVE INTO THE PAST</span>
+    <h2 className="editorial-heading center">MUSEUM HISTORY</h2>
 
-        <div className="editorial-line" />
+    <div className="editorial-image img-left">
+      <img src="../images/six.jpg" alt="Museum history" />
+    </div>
+     <div className="editorial-arrow">
+    <span>→</span>
+  </div>
+  </div>
 
-        {/* ROW 2 */}
-        <div className="editorial-row row-2">
-          <span className="editorial-kicker center">
-            {data.editorial_tabs[1]?.small_title}
-          </span>
+  <div className="editorial-line" />
 
-          <h2 className="editorial-heading center">
-            {data.editorial_tabs[1]?.main_title}
-          </h2>
+  {/* ROW 3 */}
+  <div className="editorial-row row-3">
+    <span className="editorial-kicker right">EXPERIENCE THE MUSEUM</span>
+    <h2 className="editorial-heading right">PLAN A VISIT</h2>
 
-          <div className="editorial-image img-left">
-            <img
-              src={data.editorial_tabs[1]?.image}
-              alt={data.editorial_tabs[1]?.main_title}
-            />
-          </div>
+    <div className="editorial-image img-right">
+      <img src="../images/two.jpg" alt="Plan visit" />
+    </div>
 
-          <div className="editorial-arrow">
-            <span>→</span>
-          </div>
-        </div>
+    <div className="editorial-image img-bottom">
+      <img src="../images/c1.png" alt="Interior room" />
+    </div>
+     <div className="editorial-arrow">
+    <span>→</span>
+  </div>
+  </div>
+</section>
 
-        <div className="editorial-line" />
-
-        {/* ROW 3 */}
-        <div className="editorial-row row-3">
-          <span className="editorial-kicker right">
-            {data.editorial_tabs[2]?.small_title}
-          </span>
-
-          <h2 className="editorial-heading right">
-            {data.editorial_tabs[2]?.main_title}
-          </h2>
-
-          <div className="editorial-image img-right">
-            <img
-              src={data.editorial_tabs[2]?.image}
-              alt={data.editorial_tabs[2]?.main_title}
-            />
-          </div>
-
-          {/* 👇 THIS WAS MISSED BEFORE — NOW INCLUDED */}
-          <div className="editorial-image img-bottom">
-            <img src={data.editorial_end_img} alt="Editorial bottom image" />
-          </div>
-
-          <div className="editorial-arrow">
-            <span>→</span>
-          </div>
-        </div>
-      </section>
-
-   <section className="future-section">
-  {/* MANUSCRIPT IMAGES */}
+<section className="future-section">
+  {/* MANUSCRIPT /images */}
   <img
-    src={data.future_bg_image_1}
+    src="https://cdn.prod.website-files.com/6570e8a05181277af39c19d5/657b4abc25d1ecaea536be0c_Greeble%202-p-1080.png "
     alt="Historic manuscript"
     className="manuscript manuscript-top"
   />
 
   <img
-    src={data.future_bg_image_2}
+    src="https://cdn.prod.website-files.com/6570e8a05181277af39c19d5/6594632cacf84e2f702228e4_image%209.png"
     alt="Historic manuscript"
     className="manuscript manuscript-bottom"
   />
 
   {/* CONTENT */}
   <div className="future-content-wrap">
-    <h2
-      className="future-title"
-      dangerouslySetInnerHTML={{
-        __html: data.feature_content_title.replace(/<\/?p>/g, ""),
-      }}
-    />
+    <h2 className="future-title">
+      Introduction To The 
+ <br />
+      <em>Three Immersive </em> Galleries
+    </h2>
 
-    <div
-      className="future-text"
-      dangerouslySetInnerHTML={{
-        __html: data.feature_description,
-      }}
-    />
+    <div className="future-text">
+      <p>
+       Step into a realm where India's foundational document springs to life, commemorating 75 years since its adoption on November 26, 1949. This immersive space at O.P. Jindal Global University honours the Constitution as a living testament to unity, justice, liberty, equality, and fraternity, crafted through the vision of 300 extraordinary Constituent Assembly members.
+
+      </p>
+    </div>
   </div>
 
   {/* CENTER DIVIDER */}
