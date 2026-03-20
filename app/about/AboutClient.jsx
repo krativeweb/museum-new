@@ -100,81 +100,82 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-<section className="editorial-nav">
-  {/* ROW 1 */}
-  <div className="editorial-row row-1">
-    <span className="editorial-kicker">
-      {data.editorial_tabs?.[0]?.small_title}
-    </span>
+ <section className="editorial-nav">
+        {/* ROW 1 */}
+        <div className="editorial-row row-1">
+          <span className="editorial-kicker">
+            {data.editorial_tabs[0]?.small_title}
+          </span>
 
-    <h2 className="editorial-heading">
-      {data.editorial_tabs?.[0]?.main_title}
-    </h2>
+          <h2 className="editorial-heading">
+            {data.editorial_tabs[0]?.main_title}
+          </h2>
 
-    <div className="editorial-image img-right">
-      <img
-        src={data.editorial_tabs?.[0]?.image}
-        alt={data.editorial_tabs?.[0]?.main_title}
-      />
-    </div>
+          <div className="editorial-image img-right">
+            <img
+              src={data.editorial_tabs[0]?.image}
+              alt={data.editorial_tabs[0]?.main_title}
+            />
+          </div>
 
-    <div className="editorial-arrow">
-      <span>→</span>
-    </div>
-  </div>
+          <div className="editorial-arrow">
+            <span>→</span>
+          </div>
+        </div>
 
-  <div className="editorial-line" />
+        <div className="editorial-line" />
 
-  {/* ROW 2 */}
-  <div className="editorial-row row-2">
-    <span className="editorial-kicker center">
-      {data.editorial_tabs?.[1]?.small_title}
-    </span>
+        {/* ROW 2 */}
+        <div className="editorial-row row-2">
+          <span className="editorial-kicker center">
+            {data.editorial_tabs[1]?.small_title}
+          </span>
 
-    <h2 className="editorial-heading center">
-      {data.editorial_tabs?.[1]?.main_title}
-    </h2>
+          <h2 className="editorial-heading center">
+            {data.editorial_tabs[1]?.main_title}
+          </h2>
 
-    <div className="editorial-image img-left">
-      <img
-        src={data.editorial_tabs?.[1]?.image}
-        alt={data.editorial_tabs?.[1]?.main_title}
-      />
-    </div>
+          <div className="editorial-image img-left">
+            <img
+              src={data.editorial_tabs[1]?.image}
+              alt={data.editorial_tabs[1]?.main_title}
+            />
+          </div>
 
-    <div className="editorial-arrow">
-      <span>→</span>
-    </div>
-  </div>
+          <div className="editorial-arrow">
+            <span>→</span>
+          </div>
+        </div>
 
-  <div className="editorial-line" />
+        <div className="editorial-line" />
 
-  {/* ROW 3 */}
-  <div className="editorial-row row-3">
-    <span className="editorial-kicker right">
-      {data.editorial_tabs?.[2]?.small_title}
-    </span>
+        {/* ROW 3 */}
+        <div className="editorial-row row-3">
+          <span className="editorial-kicker right">
+            {data.editorial_tabs[2]?.small_title}
+          </span>
 
-    <h2 className="editorial-heading right">
-      {data.editorial_tabs?.[2]?.main_title}
-    </h2>
+          <h2 className="editorial-heading right">
+            {data.editorial_tabs[2]?.main_title}
+          </h2>
 
-    <div className="editorial-image img-right">
-      <img
-        src={data.editorial_tabs?.[2]?.image}
-        alt={data.editorial_tabs?.[2]?.main_title}
-      />
-    </div>
+          <div className="editorial-image img-right">
+            <img
+              src={data.editorial_tabs[2]?.image}
+              alt={data.editorial_tabs[2]?.main_title}
+            />
+          </div>
 
-    <div className="editorial-image img-bottom">
-      <img src={data.editorial_end_img} alt="Interior room" />
-    </div>
+          {/* 👇 THIS WAS MISSED BEFORE — NOW INCLUDED */}
+          <div className="editorial-image img-bottom">
+            <img src={data.editorial_end_img} alt="Editorial bottom image" />
+          </div>
 
-    <div className="editorial-arrow">
-      <span>→</span>
-    </div>
-  </div>
-</section>
+          <div className="editorial-arrow">
+            <span>→</span>
+          </div>
+        </div>
+      </section>
 
    <section className="future-section">
   {/* MANUSCRIPT IMAGES */}
