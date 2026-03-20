@@ -1,9 +1,5 @@
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop"
-export const metadata = {
-  title: "About Us",
-  description: "Enriching our community through history",
-};
 
 export default function AboutPage() {
   return (
