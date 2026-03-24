@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function GeneralInquiriesSection() {
+export default function GeneralInquiriesSection({ data }) {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -15,8 +15,6 @@ export default function GeneralInquiriesSection() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
 
-  /* ================= HANDLE CHANGE ================= */
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -25,14 +23,11 @@ export default function GeneralInquiriesSection() {
       [name]: value,
     });
 
-    // remove error on typing
     setErrors({
       ...errors,
       [name]: "",
     });
   };
-
-  /* ================= VALIDATION ================= */
 
   const validate = () => {
     const newErrors = {};
@@ -47,8 +42,6 @@ export default function GeneralInquiriesSection() {
     return Object.keys(newErrors).length === 0;
   };
 
-  /* ================= SUBMIT ================= */
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccess("");
@@ -59,18 +52,16 @@ export default function GeneralInquiriesSection() {
 
     try {
       const formPayload = new FormData();
-      formPayload.append("first_name", formData.first_name);
-      formPayload.append("last_name", formData.last_name);
-      formPayload.append("email", formData.email);
-      formPayload.append("phone", formData.phone);
-      formPayload.append("message", formData.message);
+      Object.keys(formData).forEach((key) => {
+        formPayload.append(key, formData[key]);
+      });
 
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/contact`,
         {
           method: "POST",
           body: formPayload,
-        },
+        }
       );
 
       const result = await res.json();
@@ -81,7 +72,6 @@ export default function GeneralInquiriesSection() {
 
       setSuccess("Form submitted successfully ✅");
 
-      // reset form
       setFormData({
         first_name: "",
         last_name: "",
@@ -97,18 +87,19 @@ export default function GeneralInquiriesSection() {
     }
   };
 
-  /* ================= JSX ================= */
-
   return (
     <section className="inquiry-section">
       <div className="inquiry-container">
+        {/* 👇 Dynamic Heading */}
         <span className="inquiry-eyebrow">HAVE A QUESTION?</span>
 
-        <h2 className="inquiry-title">GENERAL INQUIRIES</h2>
+        <h2 className="inquiry-title">
+          {data?.contact_form_heading || "GENERAL INQUIRIES"}
+        </h2>
 
         <p className="inquiry-description">
-          Thank you for visiting us. We invite you to share any questions,
-          comments, or concerns you may have using the form below.
+          {data?.contact_form_subheading ||
+            "Thank you for visiting us. Please contact us."}
         </p>
 
         {/* SUCCESS MESSAGE */}
