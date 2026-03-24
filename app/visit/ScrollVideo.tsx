@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ScrollVideo.module.css";
 
-export default function ScrollVideo({ videoUrl }) {
-  const videoRef = useRef(null);
-  const sectionRef = useRef(null);
+export default function ScrollVideo({ videoUrl }: { videoUrl: string }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -43,10 +43,8 @@ export default function ScrollVideo({ videoUrl }) {
         playsInline
         preload="metadata"
       >
-        {/* ✅ dynamic video from API */}
         <source src={videoUrl} type="video/mp4" />
       </video>
     </section>
   );
 }
-
