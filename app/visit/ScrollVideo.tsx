@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ScrollVideo.module.css";
 
-export default function ScrollVideo() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const sectionRef = useRef<HTMLElement | null>(null);
+export default function ScrollVideo({ videoUrl }) {
+  const videoRef = useRef(null);
+  const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -13,15 +13,20 @@ export default function ScrollVideo() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          videoRef.current?.play();
+
+          if (videoRef.current) {
+            videoRef.current.play().catch(() => {});
+          }
         }
       },
       {
         threshold: 0.4,
-      }
+      },
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     return () => observer.disconnect();
   }, []);
@@ -35,10 +40,11 @@ export default function ScrollVideo() {
         ref={videoRef}
         className={styles.video}
         muted
-        playsInline 
+        playsInline
         preload="metadata"
       >
-        <source src="../video/museum.mp4" type="video/mp4" />
+        {/* ✅ dynamic video from API */}
+        <source src={videoUrl} type="video/mp4" />
       </video>
     </section>
   );
