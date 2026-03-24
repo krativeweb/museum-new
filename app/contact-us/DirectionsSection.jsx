@@ -1,21 +1,67 @@
-export default function DirectionsSection() {
+"use client";
+
+import React from "react";
+
+/* ================= HTML PARSER ================= */
+
+function renderHTML(html) {
+  if (!html) return null;
+
+  // remove <p>
+  let clean = html.replace(/<\/?p>/g, "").trim();
+
+  // decode HTML entities
+  const txt = document.createElement("textarea");
+  txt.innerHTML = clean;
+  clean = txt.value;
+
+  // split by <br>
+  const lines = clean.split(/<br\s*\/?>/gi).filter(Boolean);
+
+  return lines.map((line, i) => {
+    const parts = line.split(/(<em>.*?<\/em>)/g).filter(Boolean);
+
+    return (
+      <React.Fragment key={i}>
+        {parts.map((part, j) => {
+          if (part.startsWith("<em>")) {
+            const text = part.replace(/<\/?em>/g, "");
+            return <em key={j}>{text}</em>;
+          }
+          return <span key={j}>{part}</span>;
+        })}
+        <br />
+      </React.Fragment>
+    );
+  });
+}
+
+/* ================= COMPONENT ================= */
+
+export default function DirectionsSection({ data }) {
   return (
     <section className="directions-section">
-      {/* decorative manuscript */}
-      <div className="manuscript-bg" />
+      {/* BACKGROUND IMAGE */}
+      <div
+        className="manuscript-bg"
+        style={{
+          backgroundImage: `url(${data?.direction_bg_image})`,
+        }}
+      />
 
       <div className="directions-inner">
         {/* LEFT CONTENT */}
         <div className="directions-content">
-          <span className="directions-eyebrow">DIRECTIONS</span>
+          <span className="directions-eyebrow">
+            {data?.direction_main_title}
+          </span>
 
           <h2 className="directions-title">
-            Getting <em>to</em><br />
-            The Constitution Museum
+            {renderHTML(data?.direction_content_title)}
           </h2>
 
           <p className="directions-text">
-           The Constitution Museum is conveniently located at O. P. Jindal Global University in Sonipat, Haryana, with easy access from major roads connecting the Delhi–NCR region.
+            {renderHTML(data?.direction_description)}
           </p>
 
           <button className="directions-btn">
@@ -26,7 +72,7 @@ export default function DirectionsSection() {
         {/* RIGHT IMAGE */}
         <div className="directions-image-wrap">
           <img
-            src="https://cdn.prod.website-files.com/6570e8a05181277af39c19d5/65cd1de265653c8178b2cfe5_Group%20556.jpg"   /* your map image */
+            src={data?.direction_image}
             alt="Map"
             className="directions-image"
           />
