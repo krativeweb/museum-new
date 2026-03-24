@@ -5,14 +5,14 @@ import { useEffect, useRef, useState } from "react";
 
 /* ================= HTML PARSER ================= */
 
-function decodeHtmlEntities(str) {
+function decodeHtmlEntities(str: string) {
   if (typeof window === "undefined") return str;
   const txt = document.createElement("textarea");
   txt.innerHTML = str;
   return txt.value;
 }
 
-function renderHTML(html) {
+function renderHTML(html: string) {
   if (!html) return null;
 
   let clean = html.replace(/<\/?p>/g, "").trim();
@@ -34,9 +34,11 @@ function renderHTML(html) {
 /* ================= COMPONENT ================= */
 
 export default function PlacesCarousel() {
-  const [places, setPlaces] = useState([]);
-  const carouselRef = useRef(null);
-  const intervalRef = useRef(null);
+  const [places, setPlaces] = useState<any[]>([]);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+
+  // ✅ FIX HERE
+  const intervalRef = useRef<number | null>(null);
 
   /* ================= API ================= */
 
@@ -64,7 +66,8 @@ export default function PlacesCarousel() {
     const start = () => {
       if (intervalRef.current) return;
 
-      intervalRef.current = setInterval(() => {
+      // ✅ IMPORTANT: use window.setInterval
+      intervalRef.current = window.setInterval(() => {
         if (
           carousel.scrollLeft + carousel.clientWidth >=
           carousel.scrollWidth - 5
@@ -77,7 +80,7 @@ export default function PlacesCarousel() {
     };
 
     const stop = () => {
-      if (intervalRef.current) {
+      if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
@@ -119,7 +122,10 @@ export default function PlacesCarousel() {
         {places.map((place, i) => (
           <div className={styles.card} key={i}>
             <div className={styles.imageWrap}>
-              <img src={place.gallery_image} alt={place.title} />
+              <img
+                src={place.gallery_image?.replace(/ /g, "%20")}
+                alt={place.title}
+              />
             </div>
 
             <div className={styles.cardContent}>
