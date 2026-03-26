@@ -3,19 +3,22 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import PlanVisitModal from "./PlanVisitModal";
+import TimingsModal from "./TimingsModal";
 const menuItems = [
   { label: "HOME", href: "/" },
   { label: "ABOUT", href: "/about" },
   { label: "COLLECTIONS", href: "/collections" },
   { label: "VISIT", href: "/visit" },
   { label: "CONTACT US", href: "/contact-us" },
+  { label: "MUSEUM MAP", href: "/map" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
-
+  const [showPlanVisit, setShowPlanVisit] = useState(false);
+  const [showTimings, setShowTimings] = useState(false);
   const [footer, setFooter] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -68,12 +71,37 @@ export default function Navbar() {
       </button>
 
       {/* VIDEO BUTTON */}
-      <button className="video-unmute-btn" onClick={toggleVideo}>
-        <span className={`icon ${playing ? "pause" : "play"}`} />
-        <span className="btn-text">
-          {playing ? "Pause sound" : "Play with sound"}
-        </span>
-      </button>
+      {pathname === "/" && (
+        <div>
+          <button className="video-unmute-btn" onClick={toggleVideo}>
+            <span className={`icon ${playing ? "pause" : "play"}`} />
+            <span className="btn-text">
+              {playing ? "Pause sound" : "Play with sound"}
+            </span>
+          </button>
+          <div className="btn-container">
+            {/* ✅ Plan Visit Button */}
+            <button
+              className="custom-btn"
+              onClick={() => setShowPlanVisit(true)}
+            >
+              Plan Visit
+            </button>
+
+            {/* ✅ Timings Button */}
+            <button className="custom-btn" onClick={() => setShowTimings(true)}>
+              Timings
+            </button>
+          </div>
+        </div>
+      )}
+
+      <PlanVisitModal
+        show={showPlanVisit}
+        onClose={() => setShowPlanVisit(false)}
+      />
+
+      <TimingsModal show={showTimings} onClose={() => setShowTimings(false)} />
 
       {/* MENU OVERLAY */}
       <div className={`menu ${open ? "active" : ""}`}>
