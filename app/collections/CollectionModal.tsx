@@ -34,10 +34,10 @@ export default function CollectionModal({ item, onClose }: Props) {
   </div>
 
   <div className="detail-divider" />
-
-  <p className="detail-description">
-    {item.detail}
-  </p>
+<p
+  className="detail-description"
+  dangerouslySetInnerHTML={{ __html: item.detail }}
+/>
 
 </div>
 
