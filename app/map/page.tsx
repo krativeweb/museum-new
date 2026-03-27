@@ -46,7 +46,9 @@ export default function Home() {
           <p
             dangerouslySetInnerHTML={{
               __html:
-                data?.about_mission
+                data?.about_mission ||
+                `"Nestled within O.P. Jindal Global University, the Constitution Museum stands as a space where history, law, and citizenship converge.
+Step into the journey that shaped a nation.”<br />`,
             }}
           />
         </section>
