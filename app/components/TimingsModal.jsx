@@ -7,7 +7,7 @@ export default function TimingsModal({ show, onClose }) {
 
   useEffect(() => {
     if (show) {
-      fetch("https://thekreativeweb.com/codes/museum/api/timing-content")
+  fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/timing-content`)
         .then((res) => res.json())
         .then((res) => setData(res))
         .catch((err) => console.error(err));
