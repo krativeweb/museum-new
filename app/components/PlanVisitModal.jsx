@@ -37,6 +37,13 @@ export default function PlanVisitModal({ show, onClose }) {
     setGuests([...guests, { id: guests.length + 1, email: "", contact: "" }]);
   };
 
+  // ✅ REMOVE guest (NEW)
+  const removeGuest = (index) => {
+    if (guests.length === 1) return; // keep at least 1 guest
+    const updated = guests.filter((_, i) => i !== index);
+    setGuests(updated);
+  };
+
   // ✅ Validation
   const validate = () => {
     let newErrors = {};
@@ -156,7 +163,27 @@ export default function PlanVisitModal({ show, onClose }) {
 
             {guests.map((guest, index) => (
               <div className="guest-box" key={guest.id}>
-                <div className="guest-header">GUEST {index + 1}</div>
+                
+                {/* UPDATED HEADER WITH REMOVE */}
+                <div className="guest-header d-flex justify-content-between align-items-center">
+                  <span>GUEST {index + 1}</span>
+
+                  {guests.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeGuest(index)}
+                      style={{
+                        background: "transparent",
+                        border: "none",
+                        color: "red",
+                        cursor: "pointer",
+                        fontSize: "12px",
+                      }}
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
 
                 <div className="form-grid">
                   <div>
