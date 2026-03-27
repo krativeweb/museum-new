@@ -4,13 +4,22 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import InteractiveMap from "../components/InteractiveMap";
 
+// ✅ API Type
+type MuseumData = {
+  about_tag: string;
+  about_title: string;
+  about_mission: string;
+  map_link: string;
+  about_bg_image: string;
+};
+
 export default function Home() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<MuseumData | null>(null);
 
   useEffect(() => {
     fetch("https://thekreativeweb.com/codes/museum/api/museum-map")
       .then((res) => res.json())
-      .then((res) => setData(res))
+      .then((res: MuseumData) => setData(res))
       .catch((err) => console.error(err));
   }, []);
 
@@ -54,6 +63,7 @@ Step into the journey that shaped a nation.”<br />`,
         </section>
       </section>
 
+      {/* MAP */}
       <InteractiveMap mapLink={data?.map_link} />
 
       <Footer />
