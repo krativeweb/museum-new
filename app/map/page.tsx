@@ -17,7 +17,7 @@ export default function Home() {
   const [data, setData] = useState<MuseumData | null>(null);
 
   useEffect(() => {
-    fetch("https://thekreativeweb.com/codes/museum/api/museum-map")
+fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museum-map`)
       .then((res) => res.json())
       .then((res: MuseumData) => setData(res))
       .catch((err) => console.error(err));
