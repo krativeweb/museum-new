@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function PlanVisitModal({ show, onClose }) {
   const [guests, setGuests] = useState([{ id: 1, email: "", contact: "" }]);
@@ -37,9 +39,9 @@ export default function PlanVisitModal({ show, onClose }) {
     setGuests([...guests, { id: guests.length + 1, email: "", contact: "" }]);
   };
 
-  // ✅ REMOVE guest (NEW)
+  // ✅ Remove guest
   const removeGuest = (index) => {
-    if (guests.length === 1) return; // keep at least 1 guest
+    if (guests.length === 1) return;
     const updated = guests.filter((_, i) => i !== index);
     setGuests(updated);
   };
@@ -48,17 +50,17 @@ export default function PlanVisitModal({ show, onClose }) {
   const validate = () => {
     let newErrors = {};
 
-    if (!form.first_name) newErrors.first_name = "First name is required";
-    if (!form.last_name) newErrors.last_name = "Last name is required";
+    if (!form.first_name) newErrors.first_name = "* First name is required";
+    if (!form.last_name) newErrors.last_name = "* Last name is required";
     if (!form.contact_number)
-      newErrors.contact_number = "Contact number is required";
-    if (!form.email) newErrors.email = "Email is required";
-    if (!form.visit_date) newErrors.visit_date = "Visit date required";
-    if (!form.visit_slot) newErrors.visit_slot = "Select a slot";
+      newErrors.contact_number = "* Contact number is required";
+    if (!form.email) newErrors.email = "* Email is required";
+    if (!form.visit_date) newErrors.visit_date = "* Visit date required";
+    if (!form.visit_slot) newErrors.visit_slot = "* Select a slot";
 
     guests.forEach((g, i) => {
-      if (!g.email) newErrors[`guest_email_${i}`] = "Email required";
-      if (!g.contact) newErrors[`guest_contact_${i}`] = "Contact required";
+      if (!g.email) newErrors[`guest_email_${i}`] = "* Email required";
+      if (!g.contact) newErrors[`guest_contact_${i}`] = "* Contact required";
     });
 
     setErrors(newErrors);
@@ -94,14 +96,16 @@ export default function PlanVisitModal({ show, onClose }) {
       const data = await res.json();
 
       if (res.ok) {
-        alert("Form submitted successfully!");
+        toast.success("Form submitted successfully!", {
+          position: "top-right",
+        });
         onClose();
       } else {
-        alert(data.message || "Something went wrong");
+        toast.error(data.message || "Something went wrong");
       }
     } catch (err) {
       console.error(err);
-      alert("Server error!");
+      toast.error("Server error!");
     } finally {
       setLoading(false);
     }
@@ -140,22 +144,30 @@ export default function PlanVisitModal({ show, onClose }) {
             <div className="form-grid">
               <div>
                 <input name="first_name" placeholder="First Name" onChange={handleChange} />
-                {errors.first_name && <p style={{color:"red"}}>{errors.first_name}</p>}
+                {errors.first_name && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{errors.first_name}</p>
+                )}
               </div>
 
               <div>
                 <input name="last_name" placeholder="Last Name" onChange={handleChange} />
-                {errors.last_name && <p style={{color:"red"}}>{errors.last_name}</p>}
+                {errors.last_name && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{errors.last_name}</p>
+                )}
               </div>
 
               <div>
                 <input name="contact_number" placeholder="Contact Number" onChange={handleChange} />
-                {errors.contact_number && <p style={{color:"red"}}>{errors.contact_number}</p>}
+                {errors.contact_number && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{errors.contact_number}</p>
+                )}
               </div>
 
               <div>
                 <input name="email" placeholder="Email ID" onChange={handleChange} />
-                {errors.email && <p style={{color:"red"}}>{errors.email}</p>}
+                {errors.email && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>
+                )}
               </div>
             </div>
 
@@ -163,8 +175,6 @@ export default function PlanVisitModal({ show, onClose }) {
 
             {guests.map((guest, index) => (
               <div className="guest-box" key={guest.id}>
-                
-                {/* UPDATED HEADER WITH REMOVE */}
                 <div className="guest-header d-flex justify-content-between align-items-center">
                   <span>GUEST {index + 1}</span>
 
@@ -194,7 +204,7 @@ export default function PlanVisitModal({ show, onClose }) {
                       }
                     />
                     {errors[`guest_email_${index}`] && (
-                      <p style={{color:"red"}}>
+                      <p style={{ color: "red", fontSize: "12px" }}>
                         {errors[`guest_email_${index}`]}
                       </p>
                     )}
@@ -208,7 +218,7 @@ export default function PlanVisitModal({ show, onClose }) {
                       }
                     />
                     {errors[`guest_contact_${index}`] && (
-                      <p style={{color:"red"}}>
+                      <p style={{ color: "red", fontSize: "12px" }}>
                         {errors[`guest_contact_${index}`]}
                       </p>
                     )}
@@ -224,7 +234,9 @@ export default function PlanVisitModal({ show, onClose }) {
             <div className="form-grid">
               <div>
                 <input type="date" name="visit_date" onChange={handleChange} />
-                {errors.visit_date && <p style={{color:"red"}}>{errors.visit_date}</p>}
+                {errors.visit_date && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{errors.visit_date}</p>
+                )}
               </div>
 
               <div>
@@ -233,7 +245,9 @@ export default function PlanVisitModal({ show, onClose }) {
                   <option>10 AM</option>
                   <option>2 PM</option>
                 </select>
-                {errors.visit_slot && <p style={{color:"red"}}>{errors.visit_slot}</p>}
+                {errors.visit_slot && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{errors.visit_slot}</p>
+                )}
               </div>
             </div>
 
@@ -260,6 +274,9 @@ export default function PlanVisitModal({ show, onClose }) {
 
         </div>
       </div>
+
+      {/* ✅ TOAST */}
+      <ToastContainer />
     </div>
   );
 }
