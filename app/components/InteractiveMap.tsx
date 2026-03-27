@@ -11,11 +11,16 @@ type Room = {
   description: string;
 };
 
-export default function BuildingMap({ mapLink }) {
+// ✅ FIXED PROP TYPE
+type Props = {
+  mapLink?: string;
+};
+
+export default function BuildingMap({ mapLink }: Props) {
   const [hovered, setHovered] = useState<Room | null>(null);
   const [selected, setSelected] = useState<Room | null>(null);
-  const [zoom, setZoom] = useState(1);
-  const [isMobile, setIsMobile] = useState(false);
+  const [zoom, setZoom] = useState<number>(1);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   // ✅ Detect mobile
   useEffect(() => {
@@ -59,7 +64,8 @@ export default function BuildingMap({ mapLink }) {
         >
           <iframe
             src={
-              mapLink 
+              mapLink ||
+              "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2366.7880408058813!2d77.05640468925846!3d28.926639151457913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390daf000e5c5067%3A0xd9aa41c9487e356!2sConstitution%20Museum!5e1!3m2!1sen!2sin!4v1774261821187!5m2!1sen!2sin"
             }
             className="map-frame"
             loading="lazy"
