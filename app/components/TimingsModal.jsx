@@ -35,8 +35,8 @@ export default function TimingsModal({ show, onClose }) {
             </div>
 
             <div className="image-overlay text-white text-start">
-              <h2>{data?.overlay_title}</h2>
-              <p>{data?.overlay_subtitle}</p>
+              <h2>{data?.overlay_title || "Timings"}</h2>
+              <p>{data?.overlay_subtitle || "Book your experience in advance"}</p>
             </div>
           </div>
 
@@ -45,7 +45,7 @@ export default function TimingsModal({ show, onClose }) {
             
             {/* HEADER */}
             <div className="d-flex justify-content-between align-items-center mb-3 modal-header-dark">
-              <h4 className="mb-0">{data?.right_title}</h4>
+              <h4 className="mb-0">{data?.right_title || "Timings"}</h4>
               <button
                 className="btn-close rounded-0 timings-close"
                 onClick={onClose}
@@ -58,29 +58,36 @@ export default function TimingsModal({ show, onClose }) {
               {/* LOGOS */}
               <div className="d-flex justify-content-center align-items-center gap-2 gap-md-3 mb-3 flex-wrap text-center">
                 
-                {data?.logo1 && (
-                  <Image
-                    src={data.logo1}
-                    alt="Logo1"
-                    width={150}
-                    height={60}
-                    className="img-fluid"
-                  />
-                )}
+                <a href="#">
+                  {data?.logo1 && (
+                    <Image
+                      src={data.logo1}
+                      alt="Logo"
+                      width={120}
+                      height={60}
+                      className="img-fluid"
+                      style={{ maxWidth: "200px", height: "auto" }}
+                    />
+                  )}
+                </a>
 
-                {data?.logo2 && (
-                  <Image
-                    src={data.logo2}
-                    alt="Logo2"
-                    width={250}
-                    height={60}
-                    className="img-fluid"
-                  />
-                )}
+                <a href="https://jgu.edu.in/">
+                  {data?.logo2 && (
+                    <Image
+                      src={data.logo2}
+                      alt="Logo"
+                      width={370}
+                      height={60}
+                      className="img-fluid"
+                      style={{ maxWidth: "350px", height: "auto" }}
+                    />
+                  )}
+                </a>
+
               </div>
 
               {/* CONTENT */}
-              <div
+              <p
                 className="small text-muted text-start"
                 dangerouslySetInnerHTML={{
                   __html: data?.timings_description || "",
